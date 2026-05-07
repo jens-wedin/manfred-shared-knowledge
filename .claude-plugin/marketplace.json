@@ -7,7 +7,7 @@
   },
   "metadata": {
     "description": "Shared Claude Code skills, commands, and plugins for Manfred",
-    "version": "1.0.0"
+    "version": "1.1.0"
   },
   "plugins": [
     {
@@ -73,8 +73,8 @@
     {
       "name": "manfred-knowledge",
       "source": "./plugins/manfred-knowledge",
-      "description": "Knowledge-management utilities: Obsidian vault linting (clippings-linter), batch Markdown conversion (markitdown-convert).",
-      "version": "1.0.0"
+      "description": "Knowledge-management utilities: Obsidian vault linting (clippings-linter), batch Markdown conversion (markitdown-convert), and marketplace static QA (lint-marketplace).",
+      "version": "1.1.0"
     }
   ]
 }

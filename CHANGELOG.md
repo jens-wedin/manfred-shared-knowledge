@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
+## [1.1.0] — 2026-05-07
+
+### Added
+
+- **`manfred-knowledge:lint-marketplace`** — codifies `scripts/qa-marketplace.sh` as an invokable skill. Runs Tier 1 static QA across the marketplace: 10 deterministic checks (JSON validity, frontmatter compliance, cross-reference resolution, voice scan, hex scan, attribution audit, plugin layout, command frontmatter, plugin-table consistency, skill body sanity). Each check emits PASS / SOFT / HARD; the script exits non-zero on HARD failures. Re-runnable, no model calls, no external services. SKILL.md documents what each check covers, how to read the output, and what to do on each failure mode. Manfred lens maps the skill to the QA tier model (Tier 1 static / Tier 2 skill-level RED→GREEN→REFACTOR / Tier 3 cross-skill / Tier 4 live use). Cross-references `manfred-knowledge:markitdown-convert` and `manfred-knowledge:clippings-linter` as siblings; `superpowers:writing-skills` as the complementary Tier 2.
+
+### Changed
+
+- `.claude-plugin/marketplace.json` — `metadata.version` bumped to `1.1.0`. `manfred-knowledge` entry `version` bumped to `1.1.0`; description updated to register the new skill.
+- `plugins/manfred-knowledge/.claude-plugin/plugin.json` — `version` bumped to `1.1.0`; description updated to mention `lint-marketplace`; `keywords` extended with `qa` and `marketplace`.
+
+### Roadmap
+
+- Linear ticket [STU-77](https://linear.app/studio-manfred/issue/STU-77) → In Review pending push.
+
 ## [1.0.0] — 2026-05-04
 
 ### Manfred design ecosystem v1.0.0 — the breaking-change cut
