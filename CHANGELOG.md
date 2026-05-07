@@ -94,7 +94,7 @@ For users on a v0.x install:
 Each design-discipline mirror plugin shipped one foundational, TDD'd skill — built via the RED → GREEN → REFACTOR loop per `superpowers:writing-skills`:
 
 - `manfred-discovery:cagan-risks` (v0.13)
-- `manfred-design-research:customer-touchpoint-plan` (v0.14)
+- `manfred-discovery:customer-touchpoint-plan` (v0.14)
 - `manfred-design-systems:design-token` (v0.15)
 - `manfred-ux-strategy:design-principles` (v0.16)
 - `manfred-design-ops:handoff-spec` (v0.17)
