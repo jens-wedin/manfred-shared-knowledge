@@ -27,7 +27,7 @@ A public repo that packages Manfred's shared Claude Code assets so every team me
 /plugin install manfred-design-ops@manfred             # handoff specs, critiques, QA, review gates, sprints, team workflow, version control
 /plugin install manfred-toolkit@manfred                # ux-writing, case studies, design rationale, presentations, DS adoption + audits, meeting summaries, LinkedIn (Swedish)
 /plugin install manfred-dev@manfred                    # Vite/React: pre-merge QA, deploy, release
-/plugin install manfred-knowledge@manfred              # Obsidian vault linting, batch Markdown conversion
+/plugin install manfred-knowledge@manfred              # Obsidian vault linting, batch Markdown conversion, marketplace static QA (lint-marketplace)
 ```
 
 **3. (Optional) Install the home-level CLAUDE.md and shared design references:**
@@ -56,7 +56,7 @@ Re-run with `--force` to overwrite existing files (backups are created automatic
 | `manfred-design-ops` | 7 skills (`handoff-spec`, `design-critique`, `design-qa-checklist`, `design-review-process`, `design-sprint-plan`, `team-workflow`, `version-control-strategy`) + 3 commands (`/handoff`, `/plan-sprint`, `/setup-workflow`) | You're running design ops — handoffs, reviews, sprints, team rituals, version control. Trio attendance, design system as source of truth, Linear-anchored handoffs, async-first |
 | `manfred-toolkit` | 10 skills (`ux-writing`, `case-study`, `design-rationale`, `design-system-adoption`, `design-token-audit`, `meeting-summary`, `presentation-deck`, `linkedin-reflect`, `linkedin-show-and-tell`, `linkedin-teach`) + 3 commands (`/build-presentation`, `/write-case-study`, `/write-rationale`) | You're producing content — UX copy, case studies, rationales, presentations, DS adoption + audits, meeting summaries (bilingual SV/EN), LinkedIn (Swedish). Voice rules from `manfred-brand.md` enforced |
 | `manfred-dev` | 3 skills (`test-my-code`, `deploy`, `release`) | You ship Vite/React features and want pre-merge QA gates plus production-grade release flow. Calls `manfred-design-systems:a11y-qa` for the runtime accessibility scan |
-| `manfred-knowledge` | 2 skills (`markitdown-convert`, `clippings-linter`) | You manage an Obsidian vault or batch-convert documents to Markdown |
+| `manfred-knowledge` | 3 skills (`markitdown-convert`, `clippings-linter`, `lint-marketplace`) | You manage an Obsidian vault, batch-convert documents to Markdown, or want a re-runnable static QA pass over the marketplace plugins themselves (10 deterministic checks; HARD vs SOFT exit) |
 
 ## What `install.sh` installs
 

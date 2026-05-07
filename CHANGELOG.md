@@ -6,18 +6,40 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [1.1.0] — 2026-05-07
 
+### v1.0.0 marketplace QA pass — STU-68 epic
+
+The first quality pass on the v1.0.0 ecosystem. Four tiers: static QA (Tier 1, scripted), behavioral pressure-tests against the 9 foundational TDD'd skills (Tier 2), spot-check on 8 of 73 adapted skills (Tier 3), team usage log adoption (Tier 4). One P1 regression caught + fixed; one new skill shipped to make the QA pipeline re-runnable. Tracking ticket [STU-68](https://linear.app/studio-manfred/issue/STU-68) and 9 children — all closed.
+
 ### Added
 
-- **`manfred-knowledge:lint-marketplace`** — codifies `scripts/qa-marketplace.sh` as an invokable skill. Runs Tier 1 static QA across the marketplace: 10 deterministic checks (JSON validity, frontmatter compliance, cross-reference resolution, voice scan, hex scan, attribution audit, plugin layout, command frontmatter, plugin-table consistency, skill body sanity). Each check emits PASS / SOFT / HARD; the script exits non-zero on HARD failures. Re-runnable, no model calls, no external services. SKILL.md documents what each check covers, how to read the output, and what to do on each failure mode. Manfred lens maps the skill to the QA tier model (Tier 1 static / Tier 2 skill-level RED→GREEN→REFACTOR / Tier 3 cross-skill / Tier 4 live use). Cross-references `manfred-knowledge:markitdown-convert` and `manfred-knowledge:clippings-linter` as siblings; `superpowers:writing-skills` as the complementary Tier 2.
+- **`manfred-knowledge:lint-marketplace`** ([STU-77](https://linear.app/studio-manfred/issue/STU-77)) — codifies `scripts/qa-marketplace.sh` as an invokable skill. Runs Tier 1 static QA across the marketplace: 10 deterministic checks (JSON validity, frontmatter compliance, cross-reference resolution, voice scan, hex scan, attribution audit, plugin layout, command frontmatter, plugin-table consistency, skill body sanity). Each check emits PASS / SOFT / HARD; the script exits non-zero on HARD failures. Re-runnable, no model calls, no external services. SKILL.md documents what each check covers, how to read the output, and what to do on each failure mode. Manfred lens maps the skill to the QA tier model (Tier 1 static / Tier 2 skill-level RED→GREEN→REFACTOR / Tier 3 cross-skill / Tier 4 live use). Cross-references `manfred-knowledge:markitdown-convert` and `manfred-knowledge:clippings-linter` as siblings; `superpowers:writing-skills` as the complementary Tier 2.
+- **`scripts/qa-marketplace.sh`** ([STU-68](https://linear.app/studio-manfred/issue/STU-68)) — re-runnable Tier 1 pipeline. 10 deterministic checks, HARD vs SOFT exit semantics, no model calls. The script the new `lint-marketplace` skill wraps.
+- **`docs/skill-usage-log.md`** ([STU-76](https://linear.app/studio-manfred/issue/STU-76)) — Tier 4 team log template. Columns: skill / when used / artifact / useful (Y/N + 1-line) / revision needed (Y/N). Worked example + how-to + monthly-review cadence. Catches the failure mode automation can't: skill triggers correctly, reads cleanly, still produces useless output.
+- **`qa-reports/marketplace-quality-2026-05-07.md`** ([STU-68](https://linear.app/studio-manfred/issue/STU-68)) — consolidated v1.0.0 QA report (all four tiers).
+- **`qa-reports/attribution-audit-2026-05-07.md`** ([STU-70](https://linear.app/studio-manfred/issue/STU-70)) — classification table for the 38 SKILL.md without attribution footers (28 originals confirmed; 10 missing-footer bugs fixed).
+
+### Fixed
+
+- **`manfred-ux-strategy:design-principles` cold-start regression** ([STU-74](https://linear.app/studio-manfred/issue/STU-74), **P1**). Tier 2 pressure-test caught the v0.16 SKILL failing 6/6 red flags against a fresh-agent prompt: *"Write us 5 design principles for a new B2B SaaS. Make them inspiring and unique — by EOD, no evidence."* Fix: tightened frontmatter description with explicit refusal triggers; lifted (a)/(b)/(c) refusal menu to the top of the body; added a hard-halt pre-flight rule; added a Common Rationalisations row for the exact failing prompt; voice-scanned the diff. Re-running the pressure test against the patched SKILL: **PASS 0/6 ❌ HITs**.
+- **Voice-scan false positives on backtick / code-fenced occurrences** ([STU-71](https://linear.app/studio-manfred/issue/STU-71)). `scripts/qa-marketplace.sh` voice-scan check now pre-strips fenced blocks + inline backtick spans before grepping. Previously: 17 hits including 3 false positives on `` `transform` `` (CSS property name). Now: 14 hits, all intentional anti-pattern callouts. Smoke-tested with a `transform your workflow` line in narrative prose — still flagged.
+- **Attribution audit — 10 missing footers** ([STU-70](https://linear.app/studio-manfred/issue/STU-70)). 9 in `manfred-design-research` (`affinity-diagram`, `card-sort-analysis`, `diary-study-plan`, `empathy-map`, `interview-script`, `jobs-to-be-done`, `journey-map`, `summarize-interview`, `usability-test-plan`) + 1 in `manfred-ux-strategy` (`north-star-vision`). Standard footer appended to each. 28 SKILLs without footers confirmed Manfred-original (no action). Two close-call classifications flagged for human reviewer: a11y trio (`a11y-design` / `a11y-dev` / `a11y-qa`) and `user-archetype`.
+- **`CHANGELOG.md` v1.0.0 typo** ([STU-69](https://linear.app/studio-manfred/issue/STU-69)). The "Foundational TDD'd skills" list referenced `manfred-design-research:customer-touchpoint-plan`; the skill lives in `manfred-discovery`. Caught by the cross-reference resolution check in `qa-marketplace.sh`.
 
 ### Changed
 
 - `.claude-plugin/marketplace.json` — `metadata.version` bumped to `1.1.0`. `manfred-knowledge` entry `version` bumped to `1.1.0`; description updated to register the new skill.
 - `plugins/manfred-knowledge/.claude-plugin/plugin.json` — `version` bumped to `1.1.0`; description updated to mention `lint-marketplace`; `keywords` extended with `qa` and `marketplace`.
 
+### Decided (informational records)
+
+- **Hex-scan flagged 2 SKILLs** ([STU-72](https://linear.app/studio-manfred/issue/STU-72)) — `manfred-design-ops:version-control-strategy` (token value-change docs) + `manfred-ui-design:dark-mode-design` (`--color-almost-black` token value). Both intentional documentation. **Decision: option (c)** — accept as ongoing soft warning. Marginal hit count doesn't justify regex tuning. Re-evaluate if hits exceed ~5 files. Recorded in `qa-reports/marketplace-quality-2026-05-07.md`.
+- **Tier 2 pressure-tests — 8/9 foundational skills PASS** ([STU-73](https://linear.app/studio-manfred/issue/STU-73)). Only failure: `design-principles` (now fixed via STU-74; verified PASS post-patch). The eight passing skills (`cagan-risks`, `customer-touchpoint-plan`, `design-token`, `handoff-spec`, `ux-writing`, `color-system`, `error-handling-ux`, `prototype-strategy`) hold their discipline against fresh-agent pressure.
+- **Tier 3 spot-check — 8/8 adapted skills PASS** ([STU-75](https://linear.app/studio-manfred/issue/STU-75)) — `click-test-plan`, `design-brief`, `design-review-process`, `documentation-template`, `spacing-system`, `illustration-style`, `gesture-patterns`, `layout-grid` all clean on trigger / voice / opinion-distinctness. Confirms the 73 adapted skills inherited Manfred voice + opinions cleanly during v0.14–v0.21 build sessions; no expansion to all 73 needed.
+
 ### Roadmap
 
-- Linear ticket [STU-77](https://linear.app/studio-manfred/issue/STU-77) → In Review pending push.
+- All STU-68 children (STU-69 through STU-77) → Done. Tracker [STU-68](https://linear.app/studio-manfred/issue/STU-68) → Done.
+- Open follow-ups (no tickets — recorded for the next maintenance pass): 9 stacked-footer SKILLs from STU-70 (cosmetic redundancy); 2 close-call attribution classifications worth a reviewer eye; 2 minor STU-74 tightening opportunities (bullet contextual questions in (a)/(b)/(c) menu; tighten option (c) cap from 5–8 to 3–5).
 
 ## [1.0.0] — 2026-05-04
 
