@@ -192,3 +192,7 @@ If a Linear ticket is linked, post the recommended IA as a comment via `mcp__lin
 ---
 
 *Adapted from [Owl-Listener/designer-skills](https://github.com/Owl-Listener/designer-skills) (MIT). Ambiguity-as-finding emphasis, user-language enforcement, and Manfred follow-up test pattern are original.*
+
+---
+
+*Structurally adapted from [Owl-Listener/designer-skills](https://github.com/Owl-Listener/designer-skills) under MIT license. Voice, examples, and Manfred-specific guidance are original.*

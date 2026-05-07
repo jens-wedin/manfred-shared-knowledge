@@ -183,3 +183,7 @@ If a Linear ticket is linked, post a 5-line summary of top themes via `mcp__line
 ---
 
 *Adapted from [Owl-Listener/designer-skills](https://github.com/Owl-Listener/designer-skills) (MIT). Insight-statement format, confidence × impact prioritisation, and Manfred OST integration are original.*
+
+---
+
+*Structurally adapted from [Owl-Listener/designer-skills](https://github.com/Owl-Listener/designer-skills) under MIT license. Voice, examples, and Manfred-specific guidance are original.*

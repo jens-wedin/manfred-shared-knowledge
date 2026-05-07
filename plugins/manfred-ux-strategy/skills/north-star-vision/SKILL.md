@@ -212,3 +212,7 @@ When working with a team in a workshop, the output is the workshop kit (Step 3) 
 - `manfred-ux-strategy:competitive-analysis` — for market input
 - `manfred-design-research:user-archetype` — for scenario subjects
 - `manfred-discovery:opportunity-solution-tree` — for vision-to-outcome anchoring
+
+---
+
+*Structurally adapted from [Owl-Listener/designer-skills](https://github.com/Owl-Listener/designer-skills) under MIT license. Voice, examples, and Manfred-specific guidance are original.*

@@ -218,3 +218,7 @@ If a Linear ticket is linked, post the gate-question answer + design summary as 
 ---
 
 *Adapted from [Owl-Listener/designer-skills](https://github.com/Owl-Listener/designer-skills) (MIT). Phase 1 gate, attrition-aware sample sizing, light-prompt principle, and Manfred OST integration are original.*
+
+---
+
+*Structurally adapted from [Owl-Listener/designer-skills](https://github.com/Owl-Listener/designer-skills) under MIT license. Voice, examples, and Manfred-specific guidance are original.*

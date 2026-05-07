@@ -194,3 +194,7 @@ Save to `discovery/jobs/<segment-slug>-<YYYY-MM-DD>.md`:
 ---
 
 *Adapted from [Owl-Listener/designer-skills](https://github.com/Owl-Listener/designer-skills) (MIT). Three-dimensions emphasis, lifecycle-stages-as-default, non-consumption section, and Manfred OST integration are original.*
+
+---
+
+*Structurally adapted from [Owl-Listener/designer-skills](https://github.com/Owl-Listener/designer-skills) under MIT license. Voice, examples, and Manfred-specific guidance are original.*

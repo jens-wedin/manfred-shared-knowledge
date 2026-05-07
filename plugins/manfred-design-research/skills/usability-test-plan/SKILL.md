@@ -217,3 +217,7 @@ If a Linear ticket is linked, post the research questions + sample size + dates 
 ---
 
 *Adapted from [Owl-Listener/designer-skills](https://github.com/Owl-Listener/designer-skills) (MIT). Research-questions-first gate, scenario-not-instruction discipline, mandatory accessibility recruit, mandatory pilot, and Manfred OST integration are original.*
+
+---
+
+*Structurally adapted from [Owl-Listener/designer-skills](https://github.com/Owl-Listener/designer-skills) under MIT license. Voice, examples, and Manfred-specific guidance are original.*

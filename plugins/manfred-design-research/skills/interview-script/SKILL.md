@@ -252,3 +252,7 @@ Save the script to `discovery/scripts/<participant-or-session-slug>-<YYYY-MM-DD>
 ---
 
 *Adapted from [Owl-Listener/designer-skills](https://github.com/Owl-Listener/designer-skills) (MIT). Story-based discipline, Trio protocol, Phase 1 refusal-without-context, and Manfred-specific guidance are original.*
+
+---
+
+*Structurally adapted from [Owl-Listener/designer-skills](https://github.com/Owl-Listener/designer-skills) under MIT license. Voice, examples, and Manfred-specific guidance are original.*

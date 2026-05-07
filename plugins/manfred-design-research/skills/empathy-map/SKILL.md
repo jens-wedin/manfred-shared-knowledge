@@ -165,3 +165,7 @@ Save to `discovery/empathy-maps/<segment-slug>-<YYYY-MM-DD>.md`:
 ---
 
 *Adapted from [Owl-Listener/designer-skills](https://github.com/Owl-Listener/designer-skills) (MIT). Says/Does vs Thinks/Feels epistemic distinction, "empty > fabricated" discipline, accessibility section, and Manfred grounding are original.*
+
+---
+
+*Structurally adapted from [Owl-Listener/designer-skills](https://github.com/Owl-Listener/designer-skills) under MIT license. Voice, examples, and Manfred-specific guidance are original.*

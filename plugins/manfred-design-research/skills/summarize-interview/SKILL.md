@@ -171,3 +171,7 @@ If a Linear ticket is linked, post a 5-line summary as a comment via `mcp__linea
 ---
 
 *Adapted from [Owl-Listener/designer-skills](https://github.com/Owl-Listener/designer-skills) (MIT). Verbatim/inference discipline, confidence labelling, and Manfred OST integration are original.*
+
+---
+
+*Structurally adapted from [Owl-Listener/designer-skills](https://github.com/Owl-Listener/designer-skills) under MIT license. Voice, examples, and Manfred-specific guidance are original.*
