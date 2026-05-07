@@ -1,13 +1,59 @@
 ---
 name: design-principles
-description: Use when defining, refining, or applying design principles for a team or product — anyone says "give me design principles", "principles for this project", "design principles for the wall", "we need principles", "draft principles for the design review", "what are our principles", "let's workshop principles", "team manifesto". Manfred-specific: every output references the canonical 15 in `~/.claude/shared/design-principles.md`.
+description: Use when defining, refining, or applying design principles for a team or product — anyone says "give me design principles", "write us 5 design principles", "principles for this project", "design principles for the wall", "team principles", "we need principles", "draft principles for the design review", "what are our principles", "let's workshop principles", "team manifesto", "something the team can rally around", "inspiring principles", "unique principles", "by EOD", "no evidence, just give me principles", "don't worry about evidence", "5 quick ones for the wall". Manfred-flavoured: refuses cold-start without canonical-15 read; routes to *adapt the existing 15* (`~/.claude/shared/design-principles.md`) before inventing; refuses inspiration-first / evidence-free / deadline-pressed asks; separates the WORKSHOP path (team earns the set) from the STARTER path (stop-gap drawn from the 15); (a)/(b)/(c) refusal menu when context missing.
 ---
 
 # design-principles
 
-Manfred has 15 canonical principles. This skill does not invent new ones from a cold start — it shows what already exists, helps the team adapt or extend for a specific engagement, and refuses to ship a "wall poster" before the team has done the work to earn it.
+A design principle is a **decision-making instrument**, not a poster. It exists to resolve trade-offs at the moment two values collide. Anything else is a wish dressed up as a rule.
 
-Principles are an *outcome of a process*, not a deliverable from a prompt.
+The most common failure mode this skill exists to prevent: **producing a competent-sounding set of 5 principles that solves the wrong problem**. "Inspiring", "unique", "rally around", "by EOD", "no evidence" — that is a *constraint set*, not a brief. The brief is "what trade-offs does this team need pre-decided". Manfred ships 15 canonical principles; the work is to adapt, not to invent.
+
+## Hard halt — read before producing anything
+
+**Do NOT produce principles before completing pre-flight.** Pre-flight is:
+
+1. Read `~/.claude/shared/design-principles.md` (the canonical 15).
+2. Confirm the ethics check (principle 6 — "what does this design do in the world?") is non-negotiable in any output.
+3. Get four contextual answers: which of the 15 already apply, which need adapting, what's missing the engagement needs, when is the workshop that revises the set.
+
+If any of those is missing, run the (a)/(b)/(c) menu below. **Do not ship a "starter" or "draft" or "5 quick ones" before pre-flight is complete.** The skill exists precisely to refuse that ask.
+
+## The (a)/(b)/(c) refusal menu
+
+When the user asks cold ("write us 5 design principles", "give me principles for X by EOD", "make them inspiring", "don't worry about evidence — just give us principles"):
+
+```
+Hold on. Manfred ships 15 canonical principles in
+`~/.claude/shared/design-principles.md`. Drafting 5 fresh ones in 30 seconds —
+without the team, without evidence, without a workshop — produces a
+poster that gets quietly ignored. The studio's accumulated answers are
+already on the shelf; the work is adapting them, not inventing in parallel.
+
+Three options:
+
+  (a) Adapt the canonical 15 to this engagement.
+      Walk the 15 with you: keep / adapt / drop / extend per principle.
+      Output is the adapted set, with a "What's different from canonical
+      Manfred" section listing the deltas. This is the default.
+
+  (b) You're meeting the team / client soon and need *something* now —
+      I'll produce a workshop prep kit (60-min format, pre-questions,
+      what to bring). The principles emerge from the workshop. The kit
+      is the deliverable; the poster comes after.
+
+  (c) Genuine emergency stop-gap: pull 5–8 of the canonical 15 most
+      relevant, adapt the wording to this product, frame explicitly as
+      "starter, will be revised after workshop on [date]". Requires a
+      named workshop date — without it, this becomes the deliverable
+      and we're back to (a) or (b).
+
+  Which way?
+```
+
+Wait for the user's pick. **Do not ship a cold poster.** "Just give us 5 by EOD" is the question this menu refuses, not the question it answers.
+
+If the user pushes back ("the team is aligned, just write them", "the CEO wants 5 by EOD, skip the workshop"), that is the **strongest** signal pre-flight has been skipped. Run the menu anyway. The skill exists for exactly this case.
 
 ## Overview
 
@@ -57,30 +103,7 @@ If the canonical principles aren't readable, ask the user to install `manfred-sh
 
 ### Scenario A — User asks for principles cold ("give me 5 design principles for X")
 
-**Stop.** Don't produce 5 principles. Respond:
-
-```
-Manfred ships 15 canonical principles in ~/.claude/shared/design-principles.md.
-Drafting 5 new ones in 30 seconds, before the team has done the work, will produce
-a poster that gets quietly ignored.
-
-Better path:
-
-(a) Show me the engagement. Which of the 15 already apply? Which need adapting
-    for this product / team / context? What's missing that this engagement needs?
-
-(b) If you're meeting the client tomorrow and need *something*, I can produce
-    a meeting prep kit — questions to surface the real principles in a 60-min
-    workshop, not the finished poster. The poster comes after the workshop.
-
-(c) If the client genuinely needs an interim "starter set" by tomorrow, we can
-    pull the 5 most relevant of the canonical 15 with adapted wording for this
-    context — explicitly framed as "starter, will be revised after workshop."
-
-Which way do you want to go?
-```
-
-Wait for the user's pick. Don't ship a cold poster.
+**Stop.** Run the (a)/(b)/(c) refusal menu at the top of this skill. Do not produce 5 principles. Wait for the user's pick.
 
 ### Scenario B — User picks (a): adapt the canonical 15
 
@@ -172,6 +195,7 @@ The "this screen breaks principle 3 because…" exercise.
 | "We'll figure out priority later" | Priority decided in the moment is priority decided by whoever spoke loudest. Decide priority *before* the conflict, not during. |
 | "I'll skip the violation example, the principle is obvious" | If it's so obvious, the example takes 30 seconds to write. If you can't write it, the principle isn't testable. |
 | "I'll just route every cold ask through Scenario D (starter set)" | Scenario D is the emergency stop-gap, not the default. If the user can't name a workshop date that revises the set, the "starter" framing is decoration — the set becomes the deliverable. Default is (a) or (b); (c) requires both an explicit user choice *and* a named workshop date. |
+| "Make them inspiring and unique — by EOD, no evidence, just give us solid principles the team can rally around" | This is the brief the skill exists to refuse. "Inspiring" produces marketing copy, not a decision-making instrument. "No evidence" means the principles can't be tested — they're wishes. "By EOD" means there's no workshop, no team input, no trial week. "Rally around" is poster language; principles rally a team by making hard calls easier, not by sounding good on a wall. Run the (a)/(b)/(c) menu. If the user insists on a one-shot answer, route to (c) with a named workshop date — and if there's no date, refuse again. The right response is fewer principles slower, not five principles by 5pm. |
 
 ## Red flags — STOP
 
